@@ -12,6 +12,14 @@ const serverSchema = new mongoose.Schema({
   },
 });
 
+serverSchema.methods.toJson = function(){
+  return {
+    name: this.name,
+    connectionInfo: this.connectionInfo,
+  };
+};
+
+
 const Server = mongoose.model('Server', serverSchema);
 
 module.exports = Server;

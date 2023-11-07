@@ -31,9 +31,9 @@ if (!isProduction) {
 }
 
 if(isProduction){
-  mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true});
+  mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useCreateIndex:true, useUnifiedTopology: true});
 } else {
-  mongoose.connect('mongodb://localhost:27017/monitoring', { useNewUrlParser: true, useUnifiedTopology: true});
+  mongoose.connect('mongodb://127.0.0.1:27017/monitoring', { useNewUrlParser: true, useCreateIndex:true, useUnifiedTopology: true});
   mongoose.set('debug', true);
 }
 
