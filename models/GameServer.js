@@ -13,6 +13,10 @@ const gameServerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    gameMode: {
+        type: String,
+        required: true,
+    },
     ping: {
         type: Number,
         required: true,
@@ -25,6 +29,7 @@ const gameServerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+
 });
 
 const GameServer = mongoose.model('GameServer', gameServerSchema);

@@ -1,9 +1,13 @@
 let router = require('express').Router();
 
-router.use('/', require('./listServer'));
+router.use('/', require('./listServers'));
+router.use('/', require('./listGameServers'));
 router.use('/', require('./addServer'));
+router.use('/', require('./addGameServer'));
 router.use('/', require('./editServer'));
-router.use('/', require('./deleteServer'));
+router.use('/', require('./editGameServer'));
+router.use('/', require('./deleteServers'));
+router.use('/', require('./deleteGameServers'));
 
 router.use(function(err, req, res, next){
   if(err.name === 'ValidationError'){

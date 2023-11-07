@@ -1,7 +1,7 @@
 let router = require('express').Router();
 // let auth = require('../auth');
 
-router.get('/addServer', function(req, res, next){
+router.post('/addServer', function(req, res, next){
   return res.json({user: "aaa"});
 });
 

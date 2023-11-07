@@ -30,16 +30,15 @@ if (!isProduction) {
   app.use(errorhandler());
 }
 
-// if(isProduction){
-//   mongoose.connect(process.env.MONGODB_URI);
-// } else {
-//   mongoose.connect('mongodb://localhost/conduit');
-//   mongoose.set('debug', true);
-// }
+if(isProduction){
+  mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true});
+} else {
+  mongoose.connect('mongodb://localhost:27017/monitoring', { useNewUrlParser: true, useUnifiedTopology: true});
+  mongoose.set('debug', true);
+}
 
 require('./models/Server');
 require('./models/GameServer');
-
 
 app.use(require('./routes'));
 

@@ -1,7 +1,7 @@
 let router = require('express').Router();
 // let auth = require('../auth');
 
-router.get('/editServer/:server', function(req, res, next){
+router.get('/editGameServer/:server', function(req, res, next){
   return res.json({user: req.params});
 });
 

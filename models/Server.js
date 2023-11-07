@@ -4,6 +4,7 @@ const serverSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
   connectionInfo: {
     type: Object, // You can store JSON as an object
