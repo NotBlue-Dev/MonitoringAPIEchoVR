@@ -1,4 +1,4 @@
-var http = require('http'),
+let http = require('http'),
     path = require('path'),
     methods = require('methods'),
     express = require('express'),
@@ -9,10 +9,10 @@ var http = require('http'),
     errorhandler = require('errorhandler'),
     mongoose = require('mongoose');
 
-var isProduction = process.env.NODE_ENV === 'production';
+let isProduction = process.env.NODE_ENV === 'production';
 
 // Create global app object
-var app = express();
+let app = express();
 
 app.use(cors());
 
@@ -30,23 +30,22 @@ if (!isProduction) {
   app.use(errorhandler());
 }
 
-if(isProduction){
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
-  mongoose.connect('mongodb://localhost/conduit');
-  mongoose.set('debug', true);
-}
+// if(isProduction){
+//   mongoose.connect(process.env.MONGODB_URI);
+// } else {
+//   mongoose.connect('mongodb://localhost/conduit');
+//   mongoose.set('debug', true);
+// }
 
-require('./models/User');
-require('./models/Article');
-require('./models/Comment');
-require('./config/passport');
+require('./models/Server');
+require('./models/GameServer');
+
 
 app.use(require('./routes'));
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
@@ -79,6 +78,6 @@ app.use(function(err, req, res, next) {
 });
 
 // finally, let's start our server...
-var server = app.listen( process.env.PORT || 3000, function(){
+let server = app.listen( process.env.PORT || 3000, function(){
   console.log('Listening on port ' + server.address().port);
 });

@@ -34,7 +34,7 @@ Alternately, to quickly try out this repo in the cloud, you can [![Remix on Glit
 ## Application Structure
 
 - `app.js` - The entry point to our application. This file defines our express server and connects it to MongoDB using mongoose. It also requires the routes and models we'll be using in the application.
-- `config/` - This folder contains configuration for passport as well as a central location for configuration/environment variables.
+- `config/` - This folder contains configuration for passport as well as a central location for configuration/environment letiables.
 - `routes/` - This folder contains the route definitions for our API.
 - `models/` - This folder contains the schema definitions for our Mongoose models.
 
