@@ -1,5 +1,8 @@
 const Server = require("../../models/Server");
 let router = require('express').Router();
+const decryptMiddleware = require('../../config/decryptMiddleware');
+
+router.use('/editServer/:server', decryptMiddleware);
 
 router.post('/editServer/:server', function(req, res, next){
   Server.updateOne({ip: req.params.server}, {$set:req.body.server}).then(result => {

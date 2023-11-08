@@ -1,7 +1,5 @@
 const GameServer = require("../../models/GameServer");
 let router = require('express').Router();
-
-
 router.get('/listGameServers/:server', async function (req, res, next) {
   try {
     const gameServers = await GameServer.find({}).populate('serverIP', 'ip');
