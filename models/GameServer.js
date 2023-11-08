@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 
 const gameServerSchema = new mongoose.Schema({
-    server: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Server', // Reference to the server that this game server belongs to
-    },
     region: {
         type: String,
         required: true,
+    },
+    serverIP: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Server',
     },
     type: {
         type: String,
@@ -29,6 +30,10 @@ const gameServerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    public: {
+        type: Boolean,
+        required: true,
+    }
 
 });
 

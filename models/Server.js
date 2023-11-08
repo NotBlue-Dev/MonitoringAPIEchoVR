@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const serverSchema = new mongoose.Schema({
-  name: {
+  ip: {
     type: String,
     required: true,
     unique: true,
@@ -11,14 +11,6 @@ const serverSchema = new mongoose.Schema({
     required: true,
   },
 });
-
-serverSchema.methods.toJson = function(){
-  return {
-    name: this.name,
-    connectionInfo: this.connectionInfo,
-  };
-};
-
 
 const Server = mongoose.model('Server', serverSchema);
 

@@ -1,12 +1,21 @@
+const GameServer = require("../../models/GameServer");
+let Server = require('../../models/Server');
 let router = require('express').Router();
 // let auth = require('../auth');
 
-router.get('/editGameServer/:server', function(req, res, next){
-  return res.json({user: req.params});
+router.post('/editGameServer/:sessionID', function(req, res, next){
+  Server.find({ip: req.body.gameServer.serverIP}).then(result => {
+    if(result.length === 0) {
+        return res.status(404).json({message:"Server not found", server: req.body.gameServer});
+    } else {
+      req.body.gameServer.serverIP = result[0]._id;
+      GameServer.updateOne({sessionID: req.params.sessionID}, {$set:req.body.gameServer}).then(result => {
+        return res.json({message:"success", gameServer: req.body.gameServer});
+      }).catch(error => {
+        return res.status(500).json({error: error});
+      });
+    }
+  });
 });
-
-// router.get('/serverList', auth.required, function(req, res, next){
-//   return res.json({user: "aaa"});
-// });
 
 module.exports = router;
