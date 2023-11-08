@@ -2,7 +2,7 @@ const GameServer = require("../../models/GameServer");
 const decryptMiddleware = require("../../config/decryptMiddleware");
 let router = require('express').Router();
 
-router.use('/deleteGameServer/:sessionID', decryptMiddleware);
+// router.use('/deleteGameServer/:sessionID', decryptMiddleware);
 router.delete('/deleteGameServer/:sessionID', function(req, res, next){
   GameServer.deleteOne({sessionID: req.params.sessionID}).then(result => {
     if(result.deletedCount > 0) {

@@ -4,6 +4,7 @@ dotenv.config();
 const secretKey = process.env.PRIVATE_KEY;
 function decryptMiddleware(req, res, next) {
     const encryptedData = req.body.data; // Assuming data is sent in the request body
+    console.log(encryptedData);
     if (!encryptedData) {
         return res.status(400).json({ error: 'No encrypted data provided' });
     }
@@ -18,6 +19,7 @@ function decryptMiddleware(req, res, next) {
 
     const decryptedText = decryptedData.toString('utf8');
     req.body = JSON.parse(decryptedText);
+    console.log(req.body);
     next();
 }
 
