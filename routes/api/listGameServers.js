@@ -3,17 +3,24 @@ let router = require('express').Router();
 router.get('/listGameServers/:server', async function (req, res, next) {
   try {
     const gameServers = await GameServer.find({}).populate('serverIP', 'ip');
-
     // Modify the gameServers to include just the IP as a string
     const transformedGameServers = gameServers.map((gameServer) => {
       const { serverIP } = gameServer;
-      return {
-        ...gameServer.toObject(),
-        serverIP: serverIP ? serverIP.ip : null
-      };
+      if(serverIP.ip === req.params.server) {
+        return {
+          ...gameServer.toObject(),
+          serverIP: serverIP ? serverIP.ip : null
+        };
+      }
+      return null;
     });
 
-    res.json({ gameServers: transformedGameServers });
+    const filteredGameServers = transformedGameServers.filter(server => server !== null);
+
+    if(filteredGameServers.length === 0) {
+      return res.status(404).json({message:"Server not found"});
+    }
+    return res.json({message:"success", gameServers: filteredGameServers});
   } catch (err) {
     next(err);
   }
