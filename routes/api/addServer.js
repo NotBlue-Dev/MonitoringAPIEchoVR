@@ -4,6 +4,7 @@ const decryptMiddleware = require('../../config/decryptMiddleware');
 
 // router.use('/addServer', decryptMiddleware);
 router.post('/addServer', function(req, res, next){
+  console.log(req.body);
   let server = new Server(req.body);
 
   server.save().then(result => {
