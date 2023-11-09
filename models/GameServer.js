@@ -12,14 +12,9 @@ const gameServerSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        required: true,
     },
     gameMode: {
         type: String,
-        required: true,
-    },
-    ping: {
-        type: Number,
         required: true,
     },
     playerCount: {
