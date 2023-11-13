@@ -5,7 +5,7 @@ const validateProviderMiddleware = require('../../config/validateProviderMiddlew
 router.use('/updateServer', validateProviderMiddleware);
 router.post('/updateServer/:server', function(req, res, next){
   Server.updateOne({ip: req.params.server}, {$set:req.body}, {upsert: true, new: true, useFindAndModify: false}).then(result => {
-    if(result.nModified === 0) {
+    if(result.nModified === 0 && result.upserted === undefined) {
         return res.status(400).json({message:"Nothing was updated"});
     }
     return res.json({message:"success", server: req.body});

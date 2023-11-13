@@ -8,27 +8,35 @@ const gameServerSchema = new mongoose.Schema({
     },
     region: {
         type: String,
+        default: '',
     },
     gameServerID: {
         type: Number,
     },
     level: {
         type: String,
+        default: 'Loading',
     },
     assigned: {
         type: Boolean,
+        default: false,
+
     },
     gameMode: {
         type: String,
+        default: '',
     },
     playerCount: {
         type: Number,
+        default: 0,
     },
     sessionID: {
         type: String,
+        default: '',
     },
     public: {
         type: Boolean,
+        default: false,
     }
 
 });
