@@ -1,9 +1,8 @@
 const Server = require("../../models/Server");
 let router = require('express').Router();
-const decryptMiddleware = require('../../config/decryptMiddleware');
+const validateProviderMiddleware = require('../../config/validateProviderMiddleware');
 
-// router.use('/editServer/:server', decryptMiddleware);
-
+router.use('/addGameServer', validateProviderMiddleware);
 router.post('/updateServer/:server', function(req, res, next){
   Server.updateOne({ip: req.params.server}, {$set:req.body}, {upsert: true, new: true, useFindAndModify: false}).then(result => {
     if(result.nModified === 0) {

@@ -1,9 +1,9 @@
 const GameServer = require("../../models/GameServer");
 let router = require('express').Router();
 let Server = require('../../models/Server');
-const decryptMiddleware = require('../../config/decryptMiddleware');
+const validateProviderMiddleware = require('../../config/validateProviderMiddleware');
 
-// router.use('/addGameServer', decryptMiddleware);
+router.use('/addGameServer', validateProviderMiddleware);
 
 router.post('/addGameServer', function(req, res, next){
 

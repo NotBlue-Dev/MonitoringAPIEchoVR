@@ -1,9 +1,9 @@
 const PeerStats = require("../../models/PeerStats");
 let Server = require('../../models/Server');
-const decryptMiddleware = require("../../config/decryptMiddleware");
 let router = require('express').Router();
+const validateProviderMiddleware = require('../../config/validateProviderMiddleware');
 
-// router.use('/editGameServer/:sessionID', decryptMiddleware);
+router.use('/addGameServer', validateProviderMiddleware);
 router.post('/updatePeerStats/:server', function(req, res, next){
     Server.find({ip: req.params.server}).then(result => {
         if(result.length === 0) {

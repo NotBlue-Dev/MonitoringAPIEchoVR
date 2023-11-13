@@ -1,8 +1,9 @@
 const GameServer = require("../../models/GameServer");
-const decryptMiddleware = require("../../config/decryptMiddleware");
 let router = require('express').Router();
+const decryptMiddleware = require("../../config/validateProviderMiddleware");
+const validateProviderMiddleware = require('../../config/validateProviderMiddleware');
 
-// router.use('/deleteGameServer/:sessionID', decryptMiddleware);
+router.use('/addGameServer', validateProviderMiddleware);
 router.delete('/deleteGameServer/:gameServerID', function(req, res, next){
   GameServer.deleteOne({gameServerID: req.params.gameServerID}).then(result => {
     if(result.deletedCount > 0) {

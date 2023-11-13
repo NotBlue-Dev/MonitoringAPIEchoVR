@@ -1,10 +1,10 @@
 const GameServer = require("../../models/GameServer");
 let Server = require('../../models/Server');
-const decryptMiddleware = require("../../config/decryptMiddleware");
 let router = require('express').Router();
-// let auth = require('../auth');
+const validateProviderMiddleware = require('../../config/validateProviderMiddleware');
 
-// router.use('/editGameServer/:sessionID', decryptMiddleware);
+router.use('/addGameServer', validateProviderMiddleware);
+
 router.post('/updateGameServer/:gameServerID', function(req, res, next){
   Server.find({ip: req.body.serverIP}).then(result => {
     if(result.length === 0) {
