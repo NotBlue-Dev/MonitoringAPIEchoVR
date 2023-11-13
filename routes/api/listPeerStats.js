@@ -1,6 +1,8 @@
 let router = require('express').Router();
 const PeerStats = require("../../models/PeerStats");
+const limiter = require('../../config/rateLimite');
 
+router.use(limiter);
 
 router.get('/listPeerStats/:server', async function (req, res, next) {
     try {
