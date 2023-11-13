@@ -4,10 +4,12 @@ router.use('/', require('./listServers'));
 router.use('/', require('./listGameServers'));
 router.use('/', require('./addServer'));
 router.use('/', require('./addGameServer'));
-router.use('/', require('./editServer'));
-router.use('/', require('./editGameServer'));
+router.use('/', require('./updateServer'));
+router.use('/', require('./updateGameServer'));
 router.use('/', require('./deleteServer'));
 router.use('/', require('./deleteGameServer'));
+router.use('/', require('./listPeerStats'));
+router.use('/', require('./updatePeerStats'));
 router.use(function(err, req, res, next){
   if(err.name === 'ValidationError'){
     return res.status(422).json({

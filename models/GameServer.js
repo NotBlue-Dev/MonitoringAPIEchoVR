@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const gameServerSchema = new mongoose.Schema({
     region: {
         type: String,
-        required: true,
     },
     serverIP: {
         type: mongoose.Schema.Types.ObjectId,
@@ -13,21 +12,20 @@ const gameServerSchema = new mongoose.Schema({
     type: {
         type: String,
     },
+    assigned: {
+        type: Boolean,
+    },
     gameMode: {
         type: String,
-        required: true,
     },
     playerCount: {
         type: Number,
-        required: true,
     },
     sessionID: {
         type: String,
-        required: true,
     },
     public: {
         type: Boolean,
-        required: true,
     }
 
 });
