@@ -3,7 +3,7 @@ let Server = require('../../models/Server');
 let router = require('express').Router();
 const validateProviderMiddleware = require('../../config/validateProviderMiddleware');
 
-router.use('/addGameServer', validateProviderMiddleware);
+router.use('/updateGameServer', validateProviderMiddleware);
 
 router.post('/updateGameServer/:gameServerID', function(req, res, next){
   Server.find({ip: req.body.serverIP}).then(result => {

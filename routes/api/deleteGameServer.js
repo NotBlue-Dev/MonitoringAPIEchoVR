@@ -3,7 +3,7 @@ let router = require('express').Router();
 const decryptMiddleware = require("../../config/validateProviderMiddleware");
 const validateProviderMiddleware = require('../../config/validateProviderMiddleware');
 
-router.use('/addGameServer', validateProviderMiddleware);
+router.use('/deleteGameServer', validateProviderMiddleware);
 router.delete('/deleteGameServer/:gameServerID', function(req, res, next){
   GameServer.deleteOne({gameServerID: req.params.gameServerID}).then(result => {
     if(result.deletedCount > 0) {

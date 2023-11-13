@@ -2,7 +2,7 @@ let router = require('express').Router();
 let Server = require('../../models/Server');
 const validateProviderMiddleware = require('../../config/validateProviderMiddleware');
 
-router.use('/addGameServer', validateProviderMiddleware);
+router.use('/deleteServer', validateProviderMiddleware);
 router.delete('/deleteServer/:server', function(req, res, next){
   Server.deleteOne({ip: req.params.server}).then(result => {
     if(result.deletedCount > 0) {
