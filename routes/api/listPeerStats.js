@@ -6,10 +6,8 @@ router.get('/listPeerStats/:server', async function (req, res, next) {
     try {
         const peerStats = await PeerStats.find({}).populate('serverIP', 'ip');
         // Modify the peerStats to include just the IP as a string
-        console.log(peerStats);
         const transformedPeerStats = peerStats.map((peerStat) => {
             const {serverIP} = peerStat
-            console.log(serverIP);
             if (serverIP.ip === req.params.server) {
                 return {
                     ...peerStat.toObject(),

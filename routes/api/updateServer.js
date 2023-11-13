@@ -5,9 +5,9 @@ const decryptMiddleware = require('../../config/decryptMiddleware');
 // router.use('/editServer/:server', decryptMiddleware);
 
 router.post('/updateServer/:server', function(req, res, next){
-  Server.updateOne({ip: req.params.server}, {$set:req.body}).then(result => {
+  Server.updateOne({ip: req.params.server}, {$set:req.body}, {upsert: true, new: true, useFindAndModify: false}).then(result => {
     if(result.nModified === 0) {
-        return res.status(404).json({message:"Server not found", server: req.body});
+        return res.status(400).json({message:"Nothing was updated"});
     }
     return res.json({message:"success", server: req.body});
   }).catch(error => {

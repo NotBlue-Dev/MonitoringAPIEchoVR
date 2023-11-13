@@ -8,27 +8,21 @@ const peerStatsSchema = new mongoose.Schema({
     },
     gameServers: {
         type: Number,
-        required: true,
     },
     login : {
         type: Number,
-        required: true,
     },
     matching : {
         type: Number,
-        required: true,
     },
     config : {
         type: Number,
-        required: true,
     },
     transaction : {
         type: Number,
-        required: true,
     },
     serverdb: {
         type: Number,
-        required: true,
     }
 });
 

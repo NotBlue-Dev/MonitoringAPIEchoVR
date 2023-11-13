@@ -3,10 +3,10 @@ const decryptMiddleware = require("../../config/decryptMiddleware");
 let router = require('express').Router();
 
 // router.use('/deleteGameServer/:sessionID', decryptMiddleware);
-router.delete('/deleteGameServer/:sessionID', function(req, res, next){
-  GameServer.deleteOne({sessionID: req.params.sessionID}).then(result => {
+router.delete('/deleteGameServer/:gameServerID', function(req, res, next){
+  GameServer.deleteOne({gameServerID: req.params.gameServerID}).then(result => {
     if(result.deletedCount > 0) {
-      return res.json({message:"success", server: req.params.sessionID});
+      return res.json({message:"success", server: req.params.gameServerID});
     }
     return res.status(404).json({message:"Game Server not found", server: req.params.server});
   }).catch(error => {
