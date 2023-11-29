@@ -13,7 +13,7 @@ const fetchGameServers = (ip) => {
                     gameServers.forEach((gameServer) => {
                         if (data.findIndex(obj => obj && obj.gameServerId === gameServer.gameServerId) === -1) {
                             GameServer.findOneAndDelete({gameServerId: gameServer.gameServerId}).catch((error) => {
-                                console.log(`Error deleting GameServer: ${gameServer.gameServerId}`, error);
+                                console.log(error);
                             });
                         }
                     });
@@ -35,7 +35,7 @@ const fetchGameServers = (ip) => {
                 }
             });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err.message));
 }
 
 const updateGameServer = (gameServer) => {
@@ -44,7 +44,7 @@ const updateGameServer = (gameServer) => {
         {$set: gameServer},
         {upsert: true, new: true, useFindAndModify: false}
     ).catch((error) => {
-        console.log(`Error updating/inserting GameServer: ${gameServer.gameServerId}`, error);
+        console.log(error.status);
     });
 }
 

@@ -18,7 +18,7 @@ const fetchPeerStats = (ip) => {
                     });
                 }
             });
-        }).catch((err) => console.log(err));
+        }).catch((err) => console.log(err.message));
 }
 
 module.exports = {

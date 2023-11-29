@@ -8,7 +8,7 @@ const fetchServers = (ip) => {
             Server.updateOne({ip: data.ip}, {$set:data}, {upsert: true, new: true, useFindAndModify: false}).catch(error => {
                 console.log(error);
             });
-        }).catch((err) => console.log(err));
+        }).catch((err) => console.log(err.message));
 }
 
 module.exports = {
