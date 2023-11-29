@@ -9,7 +9,7 @@ function validateProviderMiddleware(req, res, next) {
         return next();
     }
 
-    if (clientIP !== req.body.serverIp && clientIP !== req.body.ip) {
+    if (clientIP !== req.body.serverIp && clientIP !== req.body.ip && clientIP !== req.params.server) {
         // If IP does not match serverIP or ip from the request body, send a forbidden response
         return res.status(403).json({ message: "The IP posting on the API must match the provided server IP" });
     }
