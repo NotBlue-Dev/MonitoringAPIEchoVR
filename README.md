@@ -36,7 +36,7 @@ Returns all online game servers
 "gameServers": [
     {
         "region": ""
-        "serverIP": {
+        "serverIp": {
             "id":"",
             "ip":""
         },

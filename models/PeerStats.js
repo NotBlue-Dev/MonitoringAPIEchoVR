@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const peerStatsSchema = new mongoose.Schema({
-    serverIP: {
+    serverIp: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Server',
@@ -26,7 +26,7 @@ const peerStatsSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    serverdb: {
+    serverDb: {
         type: Number,
         default: 0,
     }

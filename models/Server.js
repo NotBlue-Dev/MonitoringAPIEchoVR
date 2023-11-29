@@ -6,25 +6,25 @@ const serverSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  apiservice_host: {
+  apiServiceHost: {
       type: String,
   },
-  configservice_host: {
+  configServiceHost: {
       type: String,
   },
-  loginservice_host: {
+  loginServiceHost: {
       type: String,
   },
-  matchingservice_host: {
+  matchingServiceHost: {
       type: String,
   },
-  serverdb_host: {
+  serverDbHost: {
       type: String,
   },
-  transactionservice_host: {
+  transactionServiceHost: {
       type: String,
   },
-  publisher_lock: {
+  publisherLock: {
       type: String,
   },
   online: {

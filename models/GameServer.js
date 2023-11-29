@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const gameServerSchema = new mongoose.Schema({
-    serverIP: {
+    serverIp: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Server',
@@ -10,17 +10,12 @@ const gameServerSchema = new mongoose.Schema({
         type: String,
         default: '',
     },
-    gameServerID: {
+    gameServerId: {
         type: Number,
     },
     level: {
         type: String,
         default: 'Loading',
-    },
-    assigned: {
-        type: Boolean,
-        default: false,
-
     },
     gameMode: {
         type: String,
@@ -30,13 +25,29 @@ const gameServerSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    sessionID: {
+    sessionIp: {
         type: String,
         default: '',
+    },
+    sessionId: {
+        type: String,
+        default: '',
+    },
+    locked: {
+        type: Boolean,
+        default: false,
     },
     public: {
         type: Boolean,
         default: false,
+    },
+    playerLimit: {
+        type: Number,
+        default: 0,
+    },
+    activePlayerLimit: {
+        type: Number,
+        default: 0,
     }
 
 });

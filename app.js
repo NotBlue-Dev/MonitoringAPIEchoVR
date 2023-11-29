@@ -39,6 +39,9 @@ if(isProduction){
 
 require('./models/Server');
 require('./models/GameServer');
+require('./models/PeerStats');
+
+require('./relay/cronJob');
 
 app.use(require('./routes'));
 

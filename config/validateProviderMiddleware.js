@@ -9,9 +9,9 @@ function validateProviderMiddleware(req, res, next) {
         return next();
     }
 
-    if (clientIP !== req.body.serverIP && clientIP !== req.body.ip) {
+    if (clientIP !== req.body.serverIp && clientIP !== req.body.ip) {
         // If IP does not match serverIP or ip from the request body, send a forbidden response
-        return res.status(403).json({ message: "Forbidden" });
+        return res.status(403).json({ message: "The IP posting on the API must match the provided server IP" });
     }
 
     // If the IP matches serverIP or ip, proceed with the middleware chain
