@@ -4,6 +4,9 @@ This project is a simple API that returns a list of online servers, the data are
 For now [EchoRelay](https://github.com/EchoTools/EchoRelay/tree/main) from EchoTools version.
 The points of this API is having live data about servers and game servers allowing better server browser for user experience.
 
+# Server URL 
+http://51.75.140.182:3000/
+
 # Endpoints
 
 ##### You must only use those 2 endpoints, the other endpoints are for relay client to set data.
@@ -16,20 +19,20 @@ Returns all online servers
     {
         "_id": "654ca2834765cc7b60e95639",
         "ip": "192.168.1.1",
-        "apiservice_host": "http://192.168.1.1:777/api",
-        "configservice_host": "ws://192.168.1.1:777/config",
-        "loginservice_host": "ws://192.168.1.1:777/login?auth=AccountPassword&displayname=AccountName",
-        "matchingservice_host": "ws://192.168.1.1:777/matching",
-        "serverdb_host": "ws://192.168.1.1:777/serverdb",
+        "apiServiceHost": "http://192.168.1.1:777/api",
+        "configServiceHost": "ws://192.168.1.1:777/config",
+        "loginServiceHost": "ws://192.168.1.1:777/login?auth=AccountPassword&displayname=AccountName",
+        "matchingServiceHost": "ws://192.168.1.1:777/matching",
+        "serverDbHost": "ws://192.168.1.1:777/serverdb",
         "online":true,
-        "transactionservice_host": "ws://192.168.1.1:777/transaction",
-        "publisher_lock": "rad15_live",
+        "transactionServiceHost": "ws://192.168.1.1:777/transaction",
+        "publisherLock": "rad15_live",
         "__v": 0
     }
 ]
 ```
 
-``/api/listGameServers``
+``/api/listGameServers/{serverIp}``
 
 Returns all online game servers
 ```json
@@ -40,18 +43,20 @@ Returns all online game servers
             "id":"",
             "ip":""
         },
-        "gameServerID":""
+        "gameServerId":""
         "level": "",
-        "assigned":false,
         "gameMode": "",
-        "playerCount": 0
-        "sessionID": "",
+        "playerCount": 0,
+        "playerLimit": 0,
+        "activePlayerLimit":0,
+        "sessionIp":"",
+        "sessionId": "",
         "public": true
     }
 ]
 ```
 
-``/api/listPeerStats``
+``/api/listPeerStats/{serverIp}``
 
 Returns server peer stats
 ```json
@@ -62,7 +67,7 @@ Returns server peer stats
         "transaction": 0,
         "matching": 0,
         "config": 0,
-        "serverdb": 0,
+        "serverDb": 0,
     }
 ]
 ```
@@ -70,8 +75,3 @@ Returns server peer stats
 ## Rate limits : 
 
 100 request per 15 minutes per Ip
-
-## Post request
-
-Only the relay client can send data to the API (the IP that created the server is the only one able to edit / delete it).
-
