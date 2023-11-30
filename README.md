@@ -9,7 +9,7 @@ http://51.75.140.182:3000/
 
 # Endpoints
 
-##### You must only use those 2 endpoints, the other endpoints are for relay client to set data.
+##### You must only use those 3 endpoints, the other endpoints are for relay client to set data.
 
 ``/api/listServers``
 Returns all online servers
