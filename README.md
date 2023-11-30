@@ -75,3 +75,33 @@ Returns server peer stats
 ## Rate limits : 
 
 100 request per 15 minutes per Ip
+
+# Add server
+
+To add a server you must use the following endpoint : 
+
+``/api/addServer``
+
+You must send a POST request with those parameters : 
+
+```json
+{
+  "ip":"IP",
+  "apiServiceHost": "http://IP:PORT/api",
+  "configServiceHost": "ws://IP:PORT/config",
+  "loginServiceHost": "ws://IP:PORT/login?auth=AccountPassword&displayname=AccountName",
+  "matchingServiceHost": "ws://IP:PORT/matching",
+  "serverDbHost": "ws://IP:PORT/serverdb",
+  "transactionServiceHost": "ws://IP:PORT/transaction",
+  "publisherLock": "rad15_live",
+  "online":"true"
+}
+```
+
+In header you must add the master API Key for the central server
+
+``X-Api-Key``
+
+this will return an object with a "relayKey": containing a uuid that you will use with your relay
+
+``--centralapikey "relayKey"``
