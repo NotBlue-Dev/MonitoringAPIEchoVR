@@ -1,6 +1,3 @@
-const dotenv = require('dotenv');
-dotenv.config();
-
 function validateProviderMiddleware(req, res, next) {
     let clientIP = req.ip || req.connection.remoteAddress;
     if (clientIP.startsWith("::ffff:")) {

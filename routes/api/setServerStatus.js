@@ -1,10 +1,13 @@
 const Server = require("../../models/Server");
 let router = require('express').Router();
-const validateProviderMiddleware = require('../../config/validateProviderMiddleware');
+const validateRelayKey = require('../../config/validateRelayKey');
 
-router.use('/setServerStatus', validateProviderMiddleware);
+router.use('/setServerStatus', validateRelayKey);
 router.post('/setServerStatus/:server', function(req, res, next){
-  Server.updateOne({ip: req.params.server}, {$set:req.body}, {upsert: true, new: true, useFindAndModify: false}).then(result => {
+  Server.updateOne({ip: req.params.server}, {$set:req.body}).then(result => {
+    if (result.matchedCount === 0) {
+        return res.status(403).json({message:"Please contact notbluue on discord to get your key to central API"});
+    }
     if(result.nModified === 0 && result.upserted === undefined) {
         return res.status(400).json({message:"Nothing was updated"});
     }

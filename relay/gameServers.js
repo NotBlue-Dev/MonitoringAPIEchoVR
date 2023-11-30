@@ -1,9 +1,16 @@
 const Server = require("../models/Server");
 const GameServer = require("../models/GameServer");
-const fetchGameServers = (ip) => {
-    const url = `http://${ip}:8080/sessionsList`;
-
-    fetch(url)
+const fetchGameServers = (ip, key) => {
+    const url = `http://${ip}:8080/centralApi/sessionsList`;
+    fetch(url, {
+        method: 'GET', // or 'POST', 'PUT', etc.
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Api-Key': key,
+            // Add other headers as needed
+        },
+        // Add body for 'POST' or 'PUT' requests if necessary
+    })
         .then((response) => response.json())
         .then((data) => {
             GameServer.find({}, (err, gameServers) => {

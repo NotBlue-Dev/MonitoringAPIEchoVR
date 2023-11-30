@@ -10,9 +10,9 @@ const fetchDataFromRelays = () => {
             console.log(err);
         } else {
             server.forEach((server) => {
-                gameServers.fetchGameServers(server.ip);
-                servers.fetchServers(server.ip);
-                peerStats.fetchPeerStats(server.ip);
+                gameServers.fetchGameServers(server.ip, server.key);
+                servers.fetchServers(server.ip, server.key);
+                peerStats.fetchPeerStats(server.ip, server.key);
             });
         }
     });
