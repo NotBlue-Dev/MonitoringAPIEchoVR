@@ -1,7 +1,7 @@
 const Server = require("../models/Server");
 const GameServer = require("../models/GameServer");
 const fetchGameServers = (ip, key) => {
-    const url = `http://${ip}:8080/centralApi/sessionsList`;
+    const url = `http://${ip}:8080/centralapi/sessionslist`;
     fetch(url, {
         method: 'GET', // or 'POST', 'PUT', etc.
         headers: {
@@ -28,21 +28,21 @@ const fetchGameServers = (ip, key) => {
             });
             let serverObjectIdForIp = [];
             data.forEach((gameServer) => {
-                if (serverObjectIdForIp[gameServer.serverIp] === undefined) {
-                    Server.findOne({ip: gameServer.serverIp}).then(result => {
+                if (serverObjectIdForIp[gameServer.serverAddress] === undefined) {
+                    Server.findOne({serverAddress: gameServer.serverAddress}).then(result => {
                         if (result) {
-                            serverObjectIdForIp[gameServer.serverIp] = result._id;
-                            gameServer.serverIp = result._id;
+                            serverObjectIdForIp[gameServer.serverAddress] = result._id;
+                            gameServer.serverAddress = result._id;
                             updateGameServer(gameServer);
                         }
                     }).catch((err) => console.log(err));
                 } else {
-                    gameServer.serverIp = serverObjectIdForIp[gameServer.serverIp];
+                    gameServer.serverAddress = serverObjectIdForIp[gameServer.serverAddress];
                     updateGameServer(gameServer);
                 }
             });
         })
-        .catch((err) => console.log(err.message));
+        .catch((err) => console.log(err));
 }
 
 const updateGameServer = (gameServer) => {

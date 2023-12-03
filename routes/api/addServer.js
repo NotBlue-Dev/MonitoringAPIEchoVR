@@ -6,8 +6,8 @@ dotenv.config();
 
 router.use('/addServer', validateServerOwner);
 router.post('/addServer/', function(req, res, next){
-    delete req.body.key;
-    Server.updateOne({ip: req.body.ip}, {$set:req.body}, {upsert: true, new: true, useFindAndModify: false}).then(result => {
+    console.log(req.body);
+    Server.updateOne({serverAddress: req.body.serverAddress}, {$set:req.body}, {upsert: true, new: true, useFindAndModify: false}).then(result => {
         if(result.nModified === 0 && result.upserted === undefined) {
             return res.status(400).json({message:"Nothing was updated"});
         }

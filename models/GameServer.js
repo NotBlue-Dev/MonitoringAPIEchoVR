@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const gameServerSchema = new mongoose.Schema({
-    serverIp: {
+    serverAddress: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Server',
@@ -33,11 +33,11 @@ const gameServerSchema = new mongoose.Schema({
         type: String,
         default: '',
     },
-    locked: {
+    isLocked: {
         type: Boolean,
         default: false,
     },
-    public: {
+    isPublic: {
         type: Boolean,
         default: false,
     },

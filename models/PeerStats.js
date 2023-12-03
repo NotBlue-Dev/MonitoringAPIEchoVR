@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const peerStatsSchema = new mongoose.Schema({
-    serverIp: {
+    serverAddress: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Server',
     },
-    gameServers: {
+    gameServer: {
         type: Number,
         default: 0,
     },

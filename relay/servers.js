@@ -1,6 +1,6 @@
 const Server = require("../models/Server");
 const fetchServers = (ip, key) => {
-    const url = `http://${ip}:8080/centralApi/relay`;
+    const url = `http://${ip}:8080/centralapi/relay`;
 
     fetch(url, {
         method: 'GET', // or 'POST', 'PUT', etc.
@@ -13,10 +13,10 @@ const fetchServers = (ip, key) => {
     })
         .then((response) => response.json())
         .then((data) => {
-            Server.updateOne({ip: data.ip}, {$set:data}, {upsert: true, new: true, useFindAndModify: false}).catch(error => {
+            Server.updateOne({serverAddress: data.serverAddress}, {$set:data}, {upsert: true, new: true, useFindAndModify: false}).catch(error => {
                 console.log(error);
             });
-        }).catch((err) => console.log(err.message));
+        }).catch((err) => console.log(err));
 }
 
 module.exports = {

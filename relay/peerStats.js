@@ -1,7 +1,7 @@
 const PeerStats = require("../models/PeerStats");
 const Server = require("../models/Server");
 const fetchPeerStats = (ip, key) => {
-    const url = `http://${ip}:8080/centralApi/peerStats`;
+    const url = `http://${ip}:8080/centralapi/peerstats`;
 
     fetch(url, {
         method: 'GET', // or 'POST', 'PUT', etc.
@@ -14,11 +14,11 @@ const fetchPeerStats = (ip, key) => {
     })
         .then((response) => response.json())
         .then((data) => {
-            Server.findOne({ip: data.serverIp}).then(result => {
+            Server.findOne({serverAddress: data.serverAddress}).then(result => {
                 if(result) {
-                    data.serverIp = result._id;
+                    data.serverAddress = result._id;
                     PeerStats.findOneAndUpdate(
-                        { serverIp: result._id },
+                        { serverAddress: result._id },
                         { $set: data },
                         { upsert: true, new: true, useFindAndModify: false }
                     ).catch(error => {
@@ -26,7 +26,7 @@ const fetchPeerStats = (ip, key) => {
                     });
                 }
             });
-        }).catch((err) => console.log(err.message));
+        }).catch((err) => console.log(err));
 }
 
 module.exports = {

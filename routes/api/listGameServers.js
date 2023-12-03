@@ -5,14 +5,14 @@ const limiter = require('../../config/rateLimite');
 router.use(limiter);
 router.get('/listGameServers/:server', async function (req, res, next) {
   try {
-    const gameServers = await GameServer.find({}).populate('serverIp', 'ip');
+    const gameServers = await GameServer.find({}).populate('serverAddress', 'serverAddress');
     // Modify the gameServers to include just the IP as a string
     const transformedGameServers = gameServers.map((gameServer) => {
-      const { serverIp } = gameServer;
-      if(serverIp.ip === req.params.server) {
+      const { serverAddress } = gameServer;
+      if(serverAddress.serverAddress === req.params.server) {
         return {
           ...gameServer.toObject(),
-          serverIp: serverIp ? serverIp.ip : null
+          serverAddress: serverAddress ? serverAddress.serverAddress : null
         };
       }
       return null;

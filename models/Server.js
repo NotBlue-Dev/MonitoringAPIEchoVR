@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const uuid = require('uuid');
 
 const serverSchema = new mongoose.Schema({
-  ip: {
+  serverAddress: {
     type: String,
     required: true,
     unique: true,
@@ -11,28 +11,28 @@ const serverSchema = new mongoose.Schema({
      type: String,
      unique: true,
   },
-  apiServiceHost: {
+  apiservice_host: {
       type: String,
   },
-  configServiceHost: {
+  configservice_host: {
       type: String,
   },
-  loginServiceHost: {
+  loginservice_host: {
       type: String,
   },
-  matchingServiceHost: {
+  matchingservice_host: {
       type: String,
   },
-  serverDbHost: {
+  serverdb_host: {
       type: String,
   },
-  transactionServiceHost: {
+  transactionservice_host: {
       type: String,
   },
-  publisherLock: {
+  publisher_lock: {
       type: String,
   },
-  online: {
+  isOnline: {
       type: Boolean,
   }
 });
