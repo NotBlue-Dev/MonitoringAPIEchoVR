@@ -4,7 +4,6 @@ const validateRelayKey = require('../../config/validateRelayKey');
 
 router.use('/setServerStatus', validateRelayKey);
 router.post('/setServerStatus/:server', function(req, res, next){
-  console.log(req.body);
   Server.updateOne({serverAddress: req.params.server}, {$set:req.body}).then(result => {
     if (result.matchedCount === 0) {
         return res.status(403).json({message:"Please contact notbluue on discord to get your key to central API"});

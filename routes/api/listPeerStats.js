@@ -20,7 +20,6 @@ router.get('/listPeerStats/:server', async function (req, res, next) {
             return null;
         });
 
-        console.log(req.params.server);
         const filteredPeerStats = transformedPeerStats.filter(server => server !== null);
 
         if (filteredPeerStats.length === 0) {
