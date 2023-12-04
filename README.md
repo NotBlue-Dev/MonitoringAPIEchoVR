@@ -19,14 +19,14 @@ Returns all online servers
     {
         "_id": "654ca2834765cc7b60e95639",
         "ip": "192.168.1.1",
-        "apiServiceHost": "http://192.168.1.1:777/api",
-        "configServiceHost": "ws://192.168.1.1:777/config",
-        "loginServiceHost": "ws://192.168.1.1:777/login?auth=AccountPassword&displayname=AccountName",
-        "matchingServiceHost": "ws://192.168.1.1:777/matching",
-        "serverDbHost": "ws://192.168.1.1:777/serverdb",
-        "online":true,
-        "transactionServiceHost": "ws://192.168.1.1:777/transaction",
-        "publisherLock": "rad15_live",
+        "apiservice_host": "http://192.168.1.1:777/api",
+        "configservice_host": "ws://192.168.1.1:777/config",
+        "loginservice_host": "ws://192.168.1.1:777/login?auth=AccountPassword&displayname=AccountName",
+        "matchingservice_host": "ws://192.168.1.1:777/matching",
+        "serverdb_host": "ws://192.168.1.1:777/serverdb",
+        "isOnline":true,
+        "transactionservice_host": "ws://192.168.1.1:777/transaction",
+        "publisher_lock": "rad15_live",
         "__v": 0
     }
 ]
@@ -47,11 +47,12 @@ Returns all online game servers
         "level": "",
         "gameMode": "",
         "playerCount": 0,
+        "isLocked":true,
         "playerLimit": 0,
         "activePlayerLimit":0,
         "sessionIp":"",
         "sessionId": "",
-        "public": true
+        "isPublic": true
     }
 ]
 ```
@@ -62,7 +63,7 @@ Returns server peer stats
 ```json
 "peerStats": [
     {
-        "gameServers": 1,
+        "gameServer": 1,
         "login": 1,
         "transaction": 0,
         "matching": 0,
@@ -87,14 +88,14 @@ You must send a POST request with those parameters :
 ```json
 {
   "ip":"IP",
-  "apiServiceHost": "http://IP:PORT/api",
-  "configServiceHost": "ws://IP:PORT/config",
-  "loginServiceHost": "ws://IP:PORT/login?auth=AccountPassword&displayname=AccountName",
-  "matchingServiceHost": "ws://IP:PORT/matching",
-  "serverDbHost": "ws://IP:PORT/serverdb",
-  "transactionServiceHost": "ws://IP:PORT/transaction",
-  "publisherLock": "rad15_live",
-  "online":"true"
+  "apiservice_host": "http://IP:PORT/api",
+  "configservice_host": "ws://IP:PORT/config",
+  "loginservice_host": "ws://IP:PORT/login?auth=AccountPassword&displayname=AccountName",
+  "matchingservice_host": "ws://IP:PORT/matching",
+  "serverdb_host": "ws://IP:PORT/serverdb",
+  "transactionservice_host": "ws://IP:PORT/transaction",
+  "publisher_lock": "rad15_live",
+  "isOnline":"true"
 }
 ```
 
