@@ -80,6 +80,6 @@ app.use(function(err, req, res, next) {
 });
 
 // finally, let's start our server...
-let server = app.listen( process.env.PORT || 3000, function(){
+let server = app.listen( process.env.PORT || 7682, function(){
   console.log('Listening on port ' + server.address().port);
 });
